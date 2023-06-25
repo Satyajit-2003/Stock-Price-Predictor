@@ -8,9 +8,11 @@ from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential, load_model
 from keras.layers import Dense, LSTM, Dropout
 
+API_KEY = 'YOUR_API_KEY'
+
 # Getting the dataset
 def get_data(stock_key):
-    url  = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={stock_key}&outputsize=full&apikey=demo'
+    url  = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol={stock_key}&outputsize=full&apikey={API_KEY}'
     data = requests.get(url).json()
 
     file = open(f'{stock_key}.csv', 'w', newline='')
